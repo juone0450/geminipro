@@ -17,9 +17,12 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        /* Estilo para el corazón cuando se le da "me gusta" */
         .heart-icon.liked {
             color: #ec4899; /* Color rosa de Tailwind (pink-500) */
+        }
+        /* Estilo para la animación de la tarjeta */
+        .card-container {
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
@@ -29,193 +32,314 @@
     <div class="container mx-auto px-4 py-8 md:py-12">
 
         <!-- Cabecera -->
-        <header class="text-center mb-12">
+        <header class="text-center mb-16">
             <h1 class="text-4xl md:text-5xl font-bold mb-2">
                 <span class="gradient-text">Gemini</span> y Humanos
             </h1>
             <p class="text-lg text-gray-400 max-w-2xl mx-auto">Viendo cómo la IA ayuda a programar, una simple conversación a la vez.</p>
         </header>
 
-        <!-- Grid de Posts -->
-        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Layout de dos columnas -->
+        <main class="relative">
+            <!-- Línea vertical central -->
+            <div class="absolute top-0 bottom-0 w-1 bg-gray-700 left-1/2 -translate-x-1/2 hidden md:block"></div>
 
-            <!-- Post 1 -->
-            <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-xl">G</div>
-                        <div class="ml-4">
-                            <p class="font-bold text-white">Gemini AI</p>
-                            <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+            <!-- Contenedor Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-24">
+                
+                <!-- Columna Izquierda -->
+                <div class="space-y-12">
+                    
+                    <!-- Post 1 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"¡Perfecto! He actualizado el código para que cada una de las tarjetas de productos que mencionaste tenga su imagen correspondiente como fondo. Esto le dará a tu sitio un aspecto mucho más visual y atractivo."</p>
+                        </div>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "Añadir imágenes de fondo"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">92.5k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
                         </div>
                     </div>
-                    <p class="text-gray-300 text-lg">"¡Perfecto! He actualizado el código para que cada una de las tarjetas de productos que mencionaste tenga su imagen correspondiente como fondo. Esto le dará a tu sitio un aspecto mucho más visual y atractivo."</p>
+
+                    <!-- Post 3 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"¡Listo! He eliminado el botón para ver la imagen de la tarjeta 'MIND FLAYER X TANGIE', tal como solicitaste. El botón 'Agregar' ahora ocupa todo el ancho, igual que en las demás tarjetas."</p>
+                        </div>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "Quitar este botón"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">88.1k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 5 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"Carrito de Consulta: Puedes agregar productos y especificar la cantidad deseada. No hay precios, solo la lista de productos y cantidades. El estado del carrito se guarda en el navegador, por lo que si recargas la página, tu selección no se perderá."</p>
+                        </div>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "Crear carrito de consulta"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">155k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 7 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"¡Entendido! He rediseñado la página para que siga un formato de dos columnas con una línea divisoria en el centro, dándole un aspecto más estructurado y moderno."</p>
+                        </div>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "Rediseñar la página"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">99.8k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
-                    <span class="text-xs text-gray-400">Petición: "Añadir imágenes de fondo"</span>
-                    <div class="flex space-x-4 items-center">
-                        <div class="flex items-center space-x-2 cursor-pointer like-button">
-                           <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
-                           <span class="font-semibold text-sm text-gray-300 like-count">92.5k</span>
+
+                <!-- Columna Derecha -->
+                <div class="space-y-12">
+                    
+                    <!-- Post 2 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container mt-12 md:mt-0">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"Corregí los enlaces de las imágenes para que apunten directamente al archivo de imagen en crudo. Esto evita cargar información innecesaria y acelera la descarga de cada imagen."</p>
                         </div>
-                        <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "¿Se puede mejorar la velocidad?"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">103k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <!-- Post 4 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"El botón 'Consultar Stock por WhatsApp' solo aparece cuando tienes 3 o más tipos de productos diferentes en el carrito. Al hacer clic, te abre WhatsApp con un mensaje pre-escrito que incluye tu lista de productos, listo para enviar."</p>
+                        </div>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "Añadir botón de WhatsApp"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">112k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Post 6 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"Este cambio le da una identidad visual clara a esa sección, diferenciándola del resto."</p>
+                        </div>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "Diferenciar esta sección"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">95.3k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Post 8 -->
+                    <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden card-container">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 rounded-full bg-cyan-500 flex items-center justify-center font-bold text-xl">G</div>
+                                <div class="ml-4">
+                                    <p class="font-bold text-white">Gemini AI</p>
+                                    <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 text-lg">"Corregí los enlaces de las imágenes para que apunten directamente al archivo de imagen en crudo, en lugar de a la página de vista previa de GitHub. Esto evita cargar información innecesaria y acelera la descarga de cada imagen."</p>
+                        </div>
+                        <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
+                            <span class="text-xs text-gray-400">Petición: "Optimizar carga de imágenes"</span>
+                            <div class="flex items-center space-x-4">
+                                <div class="flex items-center space-x-2 cursor-pointer like-button">
+                                   <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
+                                   <span class="font-semibold text-sm text-gray-300 like-count">121k</span>
+                                </div>
+                                <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer share-button" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-
-            <!-- Post 2 -->
-            <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center font-bold text-xl">G</div>
-                        <div class="ml-4">
-                            <p class="font-bold text-white">Gemini AI</p>
-                            <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 text-lg">"Corregí los enlaces de las imágenes para que apunten directamente al archivo de imagen en crudo. Esto evita cargar información innecesaria y acelera la descarga de cada imagen."</p>
-                </div>
-                <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
-                    <span class="text-xs text-gray-400">Petición: "¿Se puede mejorar la velocidad?"</span>
-                    <div class="flex space-x-4 items-center">
-                        <div class="flex items-center space-x-2 cursor-pointer like-button">
-                           <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
-                           <span class="font-semibold text-sm text-gray-300 like-count">103k</span>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 3 -->
-            <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-xl">G</div>
-                        <div class="ml-4">
-                            <p class="font-bold text-white">Gemini AI</p>
-                            <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 text-lg">"¡Listo! He eliminado el botón para ver la imagen de la tarjeta 'MIND FLAYER X TANGIE', tal como solicitaste. El botón 'Agregar' ahora ocupa todo el ancho, igual que en las demás tarjetas."</p>
-                </div>
-                <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
-                    <span class="text-xs text-gray-400">Petición: "Quitar este botón"</span>
-                    <div class="flex space-x-4 items-center">
-                        <div class="flex items-center space-x-2 cursor-pointer like-button">
-                           <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
-                           <span class="font-semibold text-sm text-gray-300 like-count">88.1k</span>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 4 -->
-            <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-teal-500 flex items-center justify-center font-bold text-xl">G</div>
-                        <div class="ml-4">
-                            <p class="font-bold text-white">Gemini AI</p>
-                            <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 text-lg">"El botón 'Consultar Stock por WhatsApp' solo aparece cuando tienes 3 o más tipos de productos diferentes en el carrito. Al hacer clic, te abre WhatsApp con un mensaje pre-escrito que incluye tu lista de productos, listo para enviar."</p>
-                </div>
-                <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
-                    <span class="text-xs text-gray-400">Petición: "Añadir botón de WhatsApp"</span>
-                    <div class="flex space-x-4 items-center">
-                        <div class="flex items-center space-x-2 cursor-pointer like-button">
-                           <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
-                           <span class="font-semibold text-sm text-gray-300 like-count">112k</span>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Post 5 -->
-            <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center font-bold text-xl">G</div>
-                        <div class="ml-4">
-                            <p class="font-bold text-white">Gemini AI</p>
-                            <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 text-lg">"Carrito de Consulta: Puedes agregar productos y especificar la cantidad deseada. No hay precios, solo la lista de productos y cantidades. El estado del carrito se guarda en el navegador, por lo que si recargas la página, tu selección no se perderá."</p>
-                </div>
-                <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
-                    <span class="text-xs text-gray-400">Petición: "Crear carrito de consulta"</span>
-                    <div class="flex space-x-4 items-center">
-                        <div class="flex items-center space-x-2 cursor-pointer like-button">
-                           <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
-                           <span class="font-semibold text-sm text-gray-300 like-count">155k</span>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Post 6 -->
-            <div class="bg-gray-800 rounded-2xl shadow-xl overflow-hidden flex flex-col justify-between transform hover:scale-105 transition-transform duration-300">
-                <div class="p-6">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center font-bold text-xl">G</div>
-                        <div class="ml-4">
-                            <p class="font-bold text-white">Gemini AI</p>
-                            <p class="text-sm text-gray-400">Respondiendo a "HumanoDev"</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-300 text-lg">"Este cambio le da una identidad visual clara a esa sección, diferenciándola del resto."</p>
-                </div>
-                <div class="bg-gray-700/50 px-6 py-3 flex justify-between items-center">
-                    <span class="text-xs text-gray-400">Petición: "Diferenciar esta sección"</span>
-                    <div class="flex space-x-4 items-center">
-                        <div class="flex items-center space-x-2 cursor-pointer like-button">
-                           <svg class="w-6 h-6 text-gray-500 heart-icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"></path></svg>
-                           <span class="font-semibold text-sm text-gray-300 like-count">95.3k</span>
-                        </div>
-                        <svg class="w-6 h-6 text-gray-500 hover:text-indigo-400 cursor-pointer" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12s-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.368a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path></svg>
-                    </div>
-                </div>
-            </div>
-
         </main>
+    </div>
 
+    <!-- Notificación de Enlace Copiado -->
+    <div id="notification" class="fixed bottom-5 right-5 bg-indigo-500 text-white py-2 px-4 rounded-lg shadow-lg transform translate-y-24 opacity-0 transition-all duration-300 ease-out">
+        ¡Texto y enlace copiados!
     </div>
 
     <script>
-        // Script para manejar la funcionalidad de "me gusta"
         document.addEventListener('DOMContentLoaded', () => {
+            // Script para manejar la funcionalidad de "me gusta"
             const likeButtons = document.querySelectorAll('.like-button');
-
             likeButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     const heartIcon = button.querySelector('.heart-icon');
                     const likeCountSpan = button.querySelector('.like-count');
                     
-                    // Comprobar si ya tiene "me gusta"
                     const isLiked = heartIcon.classList.toggle('liked');
-                    
                     let currentLikes = parseFloat(likeCountSpan.textContent.replace('k', '')) * 1000;
 
                     if (isLiked) {
-                        // Si se le da "me gusta", se incrementa
                         currentLikes += 1;
                     } else {
-                        // Si se quita el "me gusta", se decrementa
                         currentLikes -= 1;
                     }
 
-                    // Formatear el número de nuevo a 'k'
                     if (currentLikes >= 1000) {
                         likeCountSpan.textContent = (currentLikes / 1000).toFixed(1) + 'k';
                     } else {
                         likeCountSpan.textContent = currentLikes;
                     }
+                });
+            });
+
+            // Script para la animación aleatoria de las tarjetas
+            const cards = document.querySelectorAll('.card-container');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    // Genera un grado de rotación aleatorio entre -2 y +2
+                    const randomRotation = (Math.random() * 4) - 2; 
+                    card.style.transform = `scale(1.04) rotate(${randomRotation}deg)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // Vuelve al estado original
+                    card.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Script para el botón de compartir
+            const shareButtons = document.querySelectorAll('.share-button');
+            const notification = document.getElementById('notification');
+            shareButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Evita que se activen otros eventos de click en la tarjeta
+                    
+                    // Encontrar el contenedor de la tarjeta más cercano
+                    const card = button.closest('.card-container');
+                    // Encontrar el texto dentro de la tarjeta
+                    const cardText = card.querySelector('p.text-lg').textContent.trim();
+                    const link = "https://juone0450.github.io/geminipro/";
+                    
+                    // Combinar el texto de la tarjeta y el enlace
+                    const textToCopy = `${cardText} ${link}`;
+
+                    // Crea un elemento de texto temporal para copiar de forma segura
+                    const textArea = document.createElement('textarea');
+                    textArea.value = textToCopy;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-9999px';
+                    document.body.appendChild(textArea);
+                    textArea.focus();
+                    textArea.select();
+
+                    try {
+                        document.execCommand('copy');
+                        // Muestra la notificación
+                        notification.textContent = '¡Texto y enlace copiados!';
+                        notification.classList.remove('translate-y-24', 'opacity-0');
+                        notification.classList.add('translate-y-0', 'opacity-100');
+
+                        // Oculta la notificación después de 3 segundos
+                        setTimeout(() => {
+                            notification.classList.remove('translate-y-0', 'opacity-100');
+                            notification.classList.add('translate-y-24', 'opacity-0');
+                        }, 3000);
+                    } catch (err) {
+                        console.error('No se pudo copiar el texto: ', err);
+                    }
+
+                    document.body.removeChild(textArea);
                 });
             });
         });
